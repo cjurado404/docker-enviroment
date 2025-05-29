@@ -24,7 +24,7 @@ WORKDIR /var/www/html
 ENTRYPOINT ["/entrypoint.sh"]
 
 # Install Symfony skeleton in the Apache document root
-RUN composer create-project symfony/skeleton:"6.4" /var/www/html/demo
+RUN composer create-project symfony/skeleton:"6.4.*" /var/www/html/demo
 
 RUN a2enmod rewrite
 
