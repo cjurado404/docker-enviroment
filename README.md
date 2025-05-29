@@ -20,12 +20,8 @@ docker compose up -d --build
 Los datos de MariaDB se almacenan en el volumen `db-data`.
 
 El código del proyecto Symfony se sincroniza con la carpeta `./symfony` del host.
-Al iniciar por primera vez se crea en ella el directorio `demo`, que contiene el proyecto Symfony.
-En posteriores arranques, el script de entrada comprueba si dentro de `symfony` existe
-algún subdirectorio (por ejemplo `demo`, `blog`, `todo`). Si no encuentra ninguno,
-ejecuta `composer create-project` para generar un nuevo proyecto; de lo contrario,
-se reutilizan los archivos existentes. Cualquier cambio dentro de esa carpeta se
-refleja de inmediato en el contenedor.
-
-
+Cada vez que se construye el contenedor se ejecuta `composer create-project` para 
+generar en dicha carpeta el directorio `demo`, sobrescribiendo cualquier contenido
+preexistente. Cualquier cambio dentro de `symfony` se refleja de inmediato en el
+contenedor.
 
