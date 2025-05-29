@@ -1,13 +1,8 @@
 FROM php:8.3-apache
 
 
-# Configurable arguments
-
-ARG SYMFONY_VERSION=6.4
-ARG PROJECT=my_project
-ENV SYMFONY_VERSION=${SYMFONY_VERSION}
-ENV PROJECT=${PROJECT}
-ENV APACHE_DOCUMENT_ROOT=/var/www/html/${PROJECT}/public
+# Install Symfony 6.4 in project "demo"
+ENV APACHE_DOCUMENT_ROOT=/var/www/html/demo/public
 
 # Install dependencies and Composer
 RUN apt-get update \
@@ -28,9 +23,9 @@ RUN chmod +x /entrypoint.sh
 WORKDIR /var/www/html
 ENTRYPOINT ["/entrypoint.sh"]
 
-# Install Symfony skeleton in the Apache document root using PROJECT name
-RUN composer create-project symfony/skeleton:"${SYMFONY_VERSION}" /var/www/html/${PROJECT}
+# Install Symfony skeleton in the Apache document root
+RUN composer create-project symfony/skeleton:"6.4" /var/www/html/demo
 
 RUN a2enmod rewrite
 
-WORKDIR /var/www/html/${PROJECT}
+WORKDIR /var/www/html/demo
