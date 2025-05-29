@@ -1,0 +1,17 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Validate docker-compose file
+        run: docker compose config -q
+      - name: Check shell script syntax
+        run: bash -n web/entrypoint.sh
+
