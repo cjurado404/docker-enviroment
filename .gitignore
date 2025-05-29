@@ -1,0 +1,44 @@
+# ============================================
+# Archivos de entorno y configuración local
+# ============================================
+
+.env
+.env.*
+.env.local
+.env.*.local
+
+# ============================================
+# Archivos de logs, caché y temporales
+# ============================================
+
+*.log
+*.tmp
+*.swp
+.DS_Store
+Thumbs.db
+.cache/
+coverage/
+phpunit.result.cache
+
+# ============================================
+# Volúmenes Docker persistentes
+# ============================================
+
+db-data/
+
+# ============================================
+# Configuración de IDEs
+# ============================================
+
+.idea/
+.vscode/
+
+# ============================================
+# Dependencias externas generadas dentro del contenedor
+# ============================================
+
+symfony/vendor/
+symfony/var/
+symfony/node_modules/
+symfony/.phpunit.result.cache
+

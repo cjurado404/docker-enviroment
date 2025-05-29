@@ -1,10 +1,15 @@
 #!/bin/bash
 set -e
 
-BASE_DIR="/var/www/html"
-PROJECT_DIR="$BASE_DIR/demo"
+PROJECT_DIR="/var/www/html/demo"
 
-# Always (re)create the Symfony skeleton in the mounted directory
-composer create-project symfony/skeleton:"6.4.*" "$PROJECT_DIR"
+if [ ! -f "$PROJECT_DIR/composer.json" ]; then
+  echo "⚙️  Creando proyecto Symfony en $PROJECT_DIR..."
+  composer create-project symfony/skeleton:"6.4.*" "$PROJECT_DIR" --no-interaction --prefer-dist
+else
+  echo "✅ Proyecto Symfony ya presente, no se vuelve a crear."
+fi
+
 chown -R www-data:www-data "$PROJECT_DIR"
+
 exec apache2-foreground

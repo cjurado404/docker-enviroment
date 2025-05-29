@@ -1,4 +1,0 @@
-# Ignore everything generated inside the Symfony project
-*
-!/.gitignore
-!/.gitkeep
