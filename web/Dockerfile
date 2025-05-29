@@ -1,6 +1,8 @@
 FROM php:8.3-apache
 
+
 # Configurable arguments
+
 ARG SYMFONY_VERSION=6.4
 ARG PROJECT=my_project
 ENV SYMFONY_VERSION=${SYMFONY_VERSION}
@@ -13,6 +15,7 @@ RUN apt-get update \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && rm -rf /var/lib/apt/lists/*
 
+
 RUN a2enmod rewrite
 
 # Configure Apache document root
@@ -24,3 +27,10 @@ RUN chmod +x /entrypoint.sh
 
 WORKDIR /var/www/html
 ENTRYPOINT ["/entrypoint.sh"]
+
+# Install Symfony skeleton in the Apache document root using PROJECT name
+RUN composer create-project symfony/skeleton:"${SYMFONY_VERSION}" /var/www/html/${PROJECT}
+
+RUN a2enmod rewrite
+
+WORKDIR /var/www/html/${PROJECT}
