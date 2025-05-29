@@ -25,5 +25,3 @@ generar en dicha carpeta el directorio `demo`, sobrescribiendo cualquier conteni
 preexistente. Cualquier cambio dentro de `symfony` se refleja de inmediato en el
 contenedor.
 
-
-
