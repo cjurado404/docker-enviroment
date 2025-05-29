@@ -10,14 +10,14 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./web:/var/www/html/${PROJECT:-my_project}
+      - ./symfony:/var/www/html/${PROJECT-my_project}
     depends_on:
       - db
   db:
     image: mariadb:latest
     environment:
       MARIADB_ROOT_PASSWORD: example
-      MARIADB_DATABASE: "${PROJECT:-my_project}_db"
+      MARIADB_DATABASE: "${PROJECT-my_project}_db"
       MARIADB_USER: symfony
       MARIADB_PASSWORD: symfony
     volumes:
