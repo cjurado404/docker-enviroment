@@ -8,9 +8,10 @@
 - Add `symfony` directory placeholder.
 - Add README with usage instructions.
 - Update installation of Symfony skeleton to version `6.4.*`.
-- Mount host `symfony` folder to `/var/www/html` so the `demo` directory syncs automatically.
-- Create the project only when the `symfony` folder is empty.
-- Improve entrypoint to skip `composer create-project` when any subdirectory exists.
-- Run `composer create-project` unconditionally at container build time.
+- Mount host `symfony` folder to `/var/www/html/demo` para sincronizar el proyecto.
+- Crear el proyecto solo cuando `composer.json` no exista en la carpeta.
+- Simplificar el entrypoint para ejecutar `composer create-project` solo en ese caso.
+- Instalar Xdebug, Symfony CLI, Composer y PHPUnit en la imagen.
+- Eliminar la carpeta `symfony` de ejemplo y añadir un `.gitignore` general.
 
 
