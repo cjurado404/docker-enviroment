@@ -7,7 +7,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./symfony:/var/www/html/demo
+      - ./symfony:/var/www/html
     depends_on:
       - db
   db:
