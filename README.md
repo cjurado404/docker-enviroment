@@ -2,9 +2,10 @@
 
 Entorno de contenedores Docker que incluye:
 
-- Apache con PHP en su versión más reciente.
+- Apache con PHP 8.3 y Xdebug habilitado.
 - MariaDB como base de datos.
-- Instalación automática de Symfony 6.4 en el proyecto `demo`.
+- Composer, Symfony CLI y PHPUnit preinstalados.
+- Instalación automática de Symfony 6.4 en el proyecto `demo` cuando aún no existe.
 
 
 ## Uso
@@ -19,9 +20,9 @@ docker compose up -d --build
 
 Los datos de MariaDB se almacenan en el volumen `db-data`.
 
-El código del proyecto Symfony se sincroniza con la carpeta `./symfony` del host.
-Cada vez que se construye el contenedor se ejecuta `composer create-project` para 
-generar en dicha carpeta el directorio `demo`, sobrescribiendo cualquier contenido
-preexistente. Cualquier cambio dentro de `symfony` se refleja de inmediato en el
-contenedor.
+El código del proyecto Symfony se sincroniza con la carpeta `./symfony` del host,
+montada en `/var/www/html/demo` dentro del contenedor.
+Al iniciar por primera vez se crea automáticamente el proyecto si no existe;
+en arranques posteriores se reutilizan los archivos ya presentes. Cualquier
+cambio dentro de `symfony` se refleja de inmediato en el contenedor.
 
